@@ -1,0 +1,19 @@
+{
+  "name": "myserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "laumlin",
+  "license": "ISC",
+  "dependencies": {
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.4.0",
+    "md5": "^2.2.1",
+    "moment": "^2.22.1",
+    "mongoose": "^4.9.9",
+    "tracer": "^0.8.12"
+  }
+}
