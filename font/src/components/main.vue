@@ -2,7 +2,7 @@
 	<div class="container mt-2">
 		<div class="row">
 			<div class="col-lg-8">
-				<keep-alive><router-view></router-view></keep-alive>
+				<router-view></router-view>
 			</div>
 
 			<div class="col-lg-4">

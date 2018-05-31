@@ -16,7 +16,7 @@ export default {
       list: []
     }
   },
-  mounted () {
+  created () {
     this.getArticles()
   },
   methods: {

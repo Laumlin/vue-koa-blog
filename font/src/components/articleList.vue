@@ -1,11 +1,13 @@
 <template>
 	<div class="article-list bg-white mt-4 py-1 text-center">
 		<!-- 文章模块 -->
-		<article class="article my-2" v-for="item in list">
+		<article class="my-2" v-for="item in list">
 			<h2>{{item.title}}</h2>
 			<p class="mb-0 createDate"><i class="fa fa-calendar-times-o mr-2"></i>发布于{{item.createDate}}</p>
 			<div class="tag">
-				<a href="#" v-for="tag in item.tag" class="mx-3">{{tag}}</a>
+			<p v-for="tag in item.tag" class="mx-3">
+				<router-link :to="{path:'/category', query:{tag: tag}}">{{tag}}</router-link>
+			</p>
 			</div>
 			<div class="content" v-html="item.content"></div>
 			<div class="read-more">
@@ -79,16 +81,15 @@ export default {
 				0 6px 10px -5px rgba(0,0,0,.2);
 	border-radius: 10px;
 }
-.article {
+article {
 	border-bottom: 1px solid rgba(0,0,0,.2);
 	height: 250px;
-	overflow: hidden;
 	position: relative;
 }
-.article .createDate {
+article .createDate {
 	color: #ea6f5a;
 }
-.article .tag {
+article .tag {
 	position: absolute;
 	right: 10px;
 	top: 10px;
@@ -97,22 +98,24 @@ export default {
 	background: #97dffd;
 	border-radius: 2px;
 }
-.article .tag a {
+article .tag a {
 	color: #fff;
 	line-height: 30px;
 }
-.article .tag a:hover {
+article .tag a:hover {
 	color: #ea6f5a;
 	text-decoration: none;
 }
-.article .content {
-	width: 90%;
+article .content {
+	width: 95%;
 	height: 100px;
 	overflow: hidden;
+	/*text-overflow: ellipsis;
+	w*/hite-space: nowrap;
 	margin: auto;
 	margin-top: 10px;
 	padding-top: 30px;
-	border: 1px solid rgba(0,0,0,.5);
+	/*border: 1px solid rgba(0,0,0,.5);*/
 }
 .read-more {
 	position: absolute;
