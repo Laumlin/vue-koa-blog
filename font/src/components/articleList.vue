@@ -9,7 +9,7 @@
 				<router-link :to="{path:'/category', query:{tag: tag}}">{{tag}}</router-link>
 			</p>
 			</div>
-			<div class="content" v-html="item.content"></div>
+			<div class="content">{{item.content | cutText}}</div>
 			<div class="read-more">
 				<p><router-link :to="{path:'/article', query:{articleId: item._id}}">阅读全文</router-link></p>
 			</div>
@@ -39,6 +39,11 @@ export default {
 	created () {
 		this.init()
 	},
+  filters: {
+    cutText (text) {
+      return text.substr(0,50)+'....'
+    }
+  },
 	methods: {
 		go () {
 			let pages = Math.ceil(this.total/this.limit)
