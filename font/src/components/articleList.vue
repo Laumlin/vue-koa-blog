@@ -52,11 +52,9 @@ export default {
       }
 		},
 		init () {
-			let tag = this.$route.query.tag
 			let param = {
 				page: this.page,
 				limit: this.limit,
-			  tag: tag
 			}
 			axios.get('/api/articles', {
 				params: param
@@ -76,8 +74,8 @@ export default {
 
 <style>
 .article-list {
-	box-shadow: 0 16px 24px 1px rgba(0,0,0,.14), 
-				0 6px 50px 1px rgba(0,0,0,.12), 
+	box-shadow: 0 16px 24px 1px rgba(0,0,0,.14),
+				0 6px 50px 1px rgba(0,0,0,.12),
 				0 6px 10px -5px rgba(0,0,0,.2);
 	border-radius: 10px;
 }
