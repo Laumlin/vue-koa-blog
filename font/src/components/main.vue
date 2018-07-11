@@ -2,7 +2,9 @@
 	<div class="container mt-2">
 		<div class="row">
 			<div class="col-lg-8">
-				<router-view></router-view>
+        <transition mode="out-in" name="fade">
+          <router-view></router-view>
+        </transition>
 			</div>
 
 			<div class="col-lg-4">
@@ -100,7 +102,7 @@ export default {
       }
     })
 	}
-}	
+}
 </script>
 
 <style scoped>
