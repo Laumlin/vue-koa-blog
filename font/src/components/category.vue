@@ -16,7 +16,12 @@ export default {
       list: []
     }
   },
-  created () {
+  watch: {
+    '$route' (to, from) {
+      this.getArticles()
+    }
+  },
+  ctreated () {
     this.getArticles()
   },
   methods: {
@@ -27,7 +32,7 @@ export default {
         tag: tag
       }
       axios.get('/api/articlesByTag', {
-        params: param 
+        params: param
       }).then((result) => {
         let res = result.data
         if (res.code === 200) {
