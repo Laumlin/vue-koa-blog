@@ -12,7 +12,7 @@ module.exports = async(ctx, next) => {
 		});
 	if(result.length === 0){
 		let user = new User({
-			name,
+			username,
 			password
 		})
 		await user.save().catch((err) => {

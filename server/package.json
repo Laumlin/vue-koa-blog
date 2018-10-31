@@ -9,6 +9,7 @@
   "author": "laumlin",
   "license": "ISC",
   "dependencies": {
+    "koa": "^2.6.1",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.4.0",
     "md5": "^2.2.1",
