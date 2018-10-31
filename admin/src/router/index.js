@@ -2,11 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
-const Admin = resolve => require(['../components/admin'], resolve)
-const Login = resolve => require(['../components/login'], resolve)
-const ArticleEdit = resolve => require(['../components/ArticleEdit'], resolve)
-const adminArticleList = resolve => require(['../components/adminArticleList'], resolve)
-const ArticleModify = resolve => require(['../components/ArticleModify'], resolve)
+const Admin = () => import('@/admin')
+const Login = () => import('^/login')
+const ArticleEdit = () => import('@/ArticleEdit')
+const adminArticleList = () => import('@/adminArticleList')
+const ArticleModify = () => import('@/ArticleModify')
 
 let router = new Router({
   mode: 'history',
