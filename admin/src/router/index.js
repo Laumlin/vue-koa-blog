@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
-const Admin = () => import('@/admin')
+const Admin = () => import('^/admin')
 const Login = () => import('^/login')
 const ArticleEdit = () => import('@/ArticleEdit')
 const adminArticleList = () => import('@/adminArticleList')
@@ -12,20 +12,23 @@ let router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/login',
       name: 'login',
+      path: '/login',
       component: Login
     },
     {
-      path: '/admin',
       name: 'admin',
+      path: '/admin',
       component: Admin,
-      redirect: '/admin/article',
+      redirect: {
+        name: 'adminArticleList'
+      },
       meta: {
         requiresAuth: true
       },
       children: [
         {
+          name: 'article',
           path: 'article',
           component: ArticleEdit,
           meta: {
@@ -33,10 +36,12 @@ let router = new Router({
           }
         },
         {
+          name: 'adminArticleList',
           path: 'adminArticleList',
           component: adminArticleList
         },
         {
+          name: 'ArticleModify',
           path: 'ArticleModify',
           component: ArticleModify
         }
