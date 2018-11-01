@@ -119,6 +119,7 @@ export default {
               message: '文章已发布'
             })
             this.visible2 = false
+            this.$router.push({path: '/admin/adminArticleList'})
           } else {
             this.$message.error('未发布')
           }
