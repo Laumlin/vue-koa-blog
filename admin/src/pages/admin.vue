@@ -59,7 +59,7 @@ export default {
   left: 0;
   bottom: 0;
   right: 0;
-  background: #FFFFCC;
+  background: #FFFFF8;
 }
 header {
   position: absolute;
