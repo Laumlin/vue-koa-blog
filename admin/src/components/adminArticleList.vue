@@ -1,62 +1,62 @@
 <template lang="html">
-<div class="container">
-  <el-table
-    :data="tableData"
-    border
-    style="width: 100%"
-    :default-sort = "{prop: 'date', order: 'descending'}"
-    >
-    <el-table-column
-      prop="title"
-      label="标题"
-      width="90">
-    </el-table-column>
-    <el-table-column
-      prop="describtion"
-      label="描述"
-      width="150">
-    </el-table-column>
-    <el-table-column
-      prop="tag"
-      label="标签"
-      width="70">
-    </el-table-column>
-    <el-table-column
-      prop="createDate"
-      label="发布时间"
-      width="180">
-    </el-table-column>
-<!--     <el-table-column
-      prop="content"
-      label="内容"
-      width="180">
-    </el-table-column> -->
-    <el-table-column
-      label="操作"
-      width="210">
-      <template slot-scope="scope">
-        <el-button
-          @click="handle(scope.$index, scope.row)"
-          type="info"
-          size="small">查看/编辑
-        </el-button>
-        <el-button
-          @click="handleDelete(scope.$index, scope.row)"
-          type="danger"
-          size="small">删除
-        </el-button>
-      </template>
-    </el-table-column>
-  </el-table>
-  <div class="block">
-  <el-pagination
-    background
-    layout="prev, pager, next"
-    :total="total"
-    @current-change="handleCurrentChange">
-  </el-pagination>
-</div>
-</div>
+  <div class="container">
+    <el-table
+      :data="tableData"
+      border
+      style="width: 100%"
+      :default-sort = "{prop: 'date', order: 'descending'}"
+      >
+      <el-table-column
+        prop="title"
+        label="标题"
+        width="200">
+      </el-table-column>
+      <el-table-column
+        prop="describtion"
+        label="描述"
+        width="200">
+      </el-table-column>
+      <el-table-column
+        prop="tag"
+        label="标签"
+        width="200">
+      </el-table-column>
+      <el-table-column
+        prop="createDate"
+        label="发布时间"
+        width="200">
+      </el-table-column>
+  <!--     <el-table-column
+        prop="content"
+        label="内容"
+        width="180">
+      </el-table-column> -->
+      <el-table-column
+        label="操作"
+        width="200">
+        <template slot-scope="scope">
+          <el-button
+            @click="handle(scope.$index, scope.row)"
+            type="info"
+            size="small">查看/编辑
+          </el-button>
+          <el-button
+            @click="handleDelete(scope.$index, scope.row)"
+            type="danger"
+            size="small">删除
+          </el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+    <div class="block">
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :total="total"
+        @current-change="handleCurrentChange">
+      </el-pagination>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -141,13 +141,7 @@ export default {
     border-radius: 2px;
 }
 .container {
-  height: 837px;
-  margin-left: 100px;
-  overflow: auto;
+  width: 1000px;
 }
-.block {
-  position: fixed;
-  bottom: 5px;
-  left: 500px;
-}
+
 </style>
