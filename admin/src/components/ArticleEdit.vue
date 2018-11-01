@@ -1,71 +1,71 @@
 <template>
-<div>
-  <div class="admin-container">
-    <mavon-editor :isdhljs="true" class="set" v-model="value" @change="getContent"></mavon-editor>
-    <div class="footer">
-      <el-popover
-        ref="popover5"
-        placement="top"
-        width="160"
-        v-model="visible2">
-        <p>确定提交吗？</p>
-        <div style="text-align: right; margin: 0">
-          <el-button size="mini" type="text" @click="visible2 = false">取消</el-button>
-          <el-button type="primary" size="mini" @click="subArticle">确定</el-button>
+  <div>
+    <div class="admin-container">
+      <mavon-editor :isdhljs="true" class="set" v-model="value" @change="getContent"></mavon-editor>
+      <div class="footer">
+        <el-popover
+          ref="popover5"
+          placement="top"
+          width="160"
+          v-model="visible2">
+          <p>确定提交吗？</p>
+          <div style="text-align: right; margin: 0">
+            <el-button size="mini" type="text" @click="visible2 = false">取消</el-button>
+            <el-button type="primary" size="mini" @click="subArticle">确定</el-button>
+          </div>
+        </el-popover>
+        <el-button v-popover:popover5 class="submit">发布</el-button>
+        <div class="left">
+        <el-button @click="dialogTableVisible = true">填写信息</el-button>
+        <el-button @click="dialogTableVisible2 = true">添加分类</el-button>
         </div>
-      </el-popover>
-      <el-button v-popover:popover5 class="submit">发布</el-button>
-      <div class="left">
-      <el-button @click="dialogTableVisible = true">填写信息</el-button>
-      <el-button @click="dialogTableVisible2 = true">添加分类</el-button>
       </div>
     </div>
-  </div>
-  <el-dialog title="文章信息" :visible.sync="dialogTableVisible" :modal-append-to-body="false">
-    <el-form :model="form">
-      <el-form-item label="文章标题" :label-width="formLabelWidth">
-        <el-input v-model="form.title" placeholder="请输入标题"></el-input>
-      </el-form-item>
-      <el-form-item label="文章标签" :label-width="formLabelWidth">
-        <el-select v-model="form.tag" multiple placeholder="请选择活动区域">
-          <el-option :key="item.name" :label="item.name" :value="item.name" v-for="item in tags"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="文章描述" :label-width="formLabelWidth">
-        <el-input v-model="form.describtion" auto-complete="off"></el-input>
-      </el-form-item>
-    </el-form>
-    <div slot="footer" class="dialog-footer">
-      <el-button @click="dialogTableVisible = false">取 消</el-button>
-      <el-button type="primary" @click="dialogTableVisible = false">确 定</el-button>
-    </div>
-  </el-dialog>
-  <el-dialog title="标签分类" :visible.sync="dialogTableVisible2" id="tags" :modal-append-to-body="false">
-    <el-tag
-      :key="tag.name"
-      v-for="(tag, index) in tags"
-      :closable="true"
-      :close-transition="false"
-      @close="handleClose(tag.name, index)"
-    >
-    {{tag.name}}
-    </el-tag>
-    <el-input
-      class="input-new-tag"
-      v-if="inputVisible"
-      v-model="inputValue"
-      ref="saveTagInput"
-      size="mini"
-      @keyup.enter.native="handleInputConfirm"
-      @blur="handleInputConfirm"
-    >
-    </el-input>
-    <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
-    <div slot="footer" class="dialog-footer">
-      <el-button type="primary" @click="dialogTableVisible2 = false">确 定</el-button>
-    </div>
-  </el-dialog>
-</div>
+    <el-dialog title="文章信息" :visible.sync="dialogTableVisible" :modal-append-to-body="false">
+      <el-form :model="form">
+        <el-form-item label="文章标题" :label-width="formLabelWidth">
+          <el-input v-model="form.title" placeholder="请输入标题"></el-input>
+        </el-form-item>
+        <el-form-item label="文章标签" :label-width="formLabelWidth">
+          <el-select v-model="form.tag" multiple placeholder="请选择活动区域">
+            <el-option :key="item.name" :label="item.name" :value="item.name" v-for="item in tags"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="文章描述" :label-width="formLabelWidth">
+          <el-input v-model="form.describtion" auto-complete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogTableVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogTableVisible = false">确 定</el-button>
+      </div>
+    </el-dialog>
+    <el-dialog title="标签分类" :visible.sync="dialogTableVisible2" id="tags" :modal-append-to-body="false">
+      <el-tag
+        :key="tag.name"
+        v-for="(tag, index) in tags"
+        :closable="true"
+        :close-transition="false"
+        @close="handleClose(tag.name, index)"
+      >
+      {{tag.name}}
+      </el-tag>
+      <el-input
+        class="input-new-tag"
+        v-if="inputVisible"
+        v-model="inputValue"
+        ref="saveTagInput"
+        size="mini"
+        @keyup.enter.native="handleInputConfirm"
+        @blur="handleInputConfirm"
+      >
+      </el-input>
+      <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="dialogTableVisible2 = false">确 定</el-button>
+      </div>
+    </el-dialog>
+  </div>  
 </template>
 
 <script>
@@ -119,7 +119,7 @@ export default {
               message: '文章已发布'
             })
             this.visible2 = false
-            this.$router.push({path: '/admin/adminArticleList'})
+            this.$router.push({path: '/adminArticleList'})
           } else {
             this.$message.error('未发布')
           }
@@ -218,7 +218,7 @@ export default {
     padding: 20px;
 }
 .set{
-		height: 500px;
+		height: 700px;
     width: 1100px;
 }
 .submit{

@@ -46,10 +46,6 @@ let router = new Router({
           component: ArticleModify
         }
       ]
-    },
-    {
-      path: '*',
-      redirect: '/login'
     }
   ]
 })

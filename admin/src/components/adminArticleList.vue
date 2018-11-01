@@ -65,7 +65,7 @@ export default {
   data () {
     return {
       total: 1,
-      pageSize: 4,
+      pageSize: 10,
       page: 1,
       // busy: true, //是否还有数据要加载
       tableData: []
@@ -134,7 +134,6 @@ export default {
 
 <style lang="css">
 .row-bg {
-    /*background-color: #f9fafc;*/
     background-color: #99a9bf;
     width: 100%;
     height: 837px;

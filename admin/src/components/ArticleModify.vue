@@ -1,6 +1,6 @@
 <template>
-<div>
-  <mavon-editor class="set" v-model="value" @change="getContent"></mavon-editor>
+  <div class="modify-container">
+    <mavon-editor class="markdown" v-model="value" @change="getContent" />
     <div class="footer">
       <el-popover
         ref="popover5"
@@ -14,43 +14,43 @@
         </div>
       </el-popover>
       <el-button v-popover:popover5 class="submit">发布</el-button>
-    <el-button @click="dialogTableVisible=true">修改信息</el-button>
-    <el-button @click="dialogTableVisible2=true">修改分类</el-button>
+      <el-button @click="dialogTableVisible=true">修改信息</el-button>
+      <el-button @click="dialogTableVisible2=true">修改分类</el-button>
+    </div>
+    <el-dialog title="文章信息" :visible.sync="dialogTableVisible" :modal-append-to-body="false">
+      <el-form :model="form">
+        <el-form-item label="文章标题" :label-width="formLabelWidth">
+          <el-input v-model="form.title"></el-input>
+        </el-form-item>
+        <el-form-item label="文章描述" :label-width="formLabelWidth">
+          <el-input v-model="form.describtion"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogTableVisible=false">取消</el-button>
+        <el-button @click="dialogTableVisible=false" type="primary">确定</el-button>
+      </div>
+    </el-dialog>
+    <el-dialog title="标签信息" :visible.sync="dialogTableVisible2" :modal-append-to-body="false">
+  <!-- tags的结构是['a', 'b'] -->
+      <el-tag
+        :key="tag"
+        v-for="(tag, index) in tags"
+        :closable="true"
+        :close-transition="false"
+        @close="handleClose(tag, index)"
+      >
+      {{tag}}
+      </el-tag>
+      <el-select v-model="tags" multiple placeholder="请选择活动区域">
+        <el-option :key="item.name" :label="item.name" :value="item.name" v-for="item in allTags"></el-option>
+      </el-select>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogTableVisible2=false">取消</el-button>
+        <el-button @click="dialogTableVisible2=false" type="primary">确定</el-button>
+      </div>
+    </el-dialog>
   </div>
-  <el-dialog title="文章信息" :visible.sync="dialogTableVisible" :modal-append-to-body="false">
-    <el-form :model="form">
-      <el-form-item label="文章标题" :label-width="formLabelWidth">
-        <el-input v-model="form.title"></el-input>
-      </el-form-item>
-      <el-form-item label="文章描述" :label-width="formLabelWidth">
-        <el-input v-model="form.describtion"></el-input>
-      </el-form-item>
-    </el-form>
-    <div slot="footer" class="dialog-footer">
-      <el-button @click="dialogTableVisible=false">取消</el-button>
-      <el-button @click="dialogTableVisible=false" type="primary">确定</el-button>
-    </div>
-  </el-dialog>
-  <el-dialog title="标签信息" :visible.sync="dialogTableVisible2" :modal-append-to-body="false">
-<!-- tags的结构是['a', 'b'] -->
-    <el-tag
-      :key="tag"
-      v-for="(tag, index) in tags"
-      :closable="true"
-      :close-transition="false"
-      @close="handleClose(tag, index)"
-    >
-    {{tag}}
-    </el-tag>
-    <el-select v-model="tags" multiple placeholder="请选择活动区域">
-      <el-option :key="item.name" :label="item.name" :value="item.name" v-for="item in allTags"></el-option>
-    </el-select>
-    <div slot="footer" class="dialog-footer">
-      <el-button @click="dialogTableVisible2=false">取消</el-button>
-      <el-button @click="dialogTableVisible2=false" type="primary">确定</el-button>
-    </div>
-  </el-dialog>
-</div>
 </template>
 
 <script>
@@ -118,7 +118,6 @@ export default{
     },
     articleModify () {
       let articleId = this.$route.query.articleId
-      console.log(articleId)
       let title = this.form.title
       let describtion = this.form.describtion
       let tag = this.tags
@@ -147,7 +146,14 @@ export default{
 </script>
 
 <style scoped>
-.set{
-  height: 500px;
+.modify-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.markdown{
+  height: 700px;
+  width: 80%;
 }
 </style>
