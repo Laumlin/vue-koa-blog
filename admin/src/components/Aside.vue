@@ -1,21 +1,18 @@
 <template>
   <div class="aside">
   	<nav>
-  	  <router-link to="/admin/article" active-class="active"
-  	  class="aside-nav-list" tag="li">
-  	  	<i class="iconfont icon-edit"></i>发布文章
+  	  <router-link :to="{path: 'article'}" active-class="active" class="aside-nav-list" tag="li">
+  	  	<i class="iconfont icon-edit">发布文章</i>
   	  </router-link>
-  	  <router-link to="/admin/adminArticleList" class="aside-nav-list" tag="li" active-class="active">
-  	  	<i class="iconfont icon-article"></i>文章管理
-  	  </router-link>
-  	  <router-link to="" class="aside-nav-list" tag="li" active-class="active">
-  	  	<i class="iconfont icon-iconfontyouhuiquan"></i>标签管理
+  	  <router-link :to="{name: 'adminArticleList'}" class="aside-nav-list" tag="li" active-class="active">
+  	  	<i class="iconfont icon-article">文章管理</i>
   	  </router-link>
   	</nav>
   </div>
 </template>
 
 <script>
+
 </script>
 
 <style scoped="">
