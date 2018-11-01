@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Aside from './Aside'
+const Aside = () => import('@/Aside')
 export default {
   name: 'one',
   components: {
@@ -74,14 +74,14 @@ aside {
   width: 150px;
   top: 50px;
   left: 0;
-  height: 92%;
+  height: 100%;
   background: #2b3340;
 }
 section {
-  position: absolute;
-  top: 55px;
-  left: 150px;
-  min-width: 630px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
 }
 .logo {
   position: absolute;
