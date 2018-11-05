@@ -18,7 +18,7 @@ let router = new Router({
     },
     {
       name: 'admin',
-      path: '/admin',
+      path: '/',
       component: Admin,
       redirect: {
         name: 'adminArticleList'
