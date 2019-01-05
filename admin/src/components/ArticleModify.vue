@@ -1,6 +1,6 @@
 <template>
   <div class="modify-container">
-    <mavon-editor class="markdown" v-model="value" @change="getContent" />
+    <mavon-editor class="markdown" :ishljs="true" v-model="value" @change="getContent" />
     <div class="footer">
       <el-popover
         ref="popover5"
@@ -13,9 +13,9 @@
           <el-button type="primary" size="mini" @click="articleModify">确定</el-button>
         </div>
       </el-popover>
-      <el-button v-popover:popover5 class="submit">发布</el-button>
-      <el-button @click="dialogTableVisible=true">修改信息</el-button>
-      <el-button @click="dialogTableVisible2=true">修改分类</el-button>
+      <el-button class="footer-left" @click="dialogTableVisible=true">修改信息</el-button>
+      <el-button class="footer-left" @click="dialogTableVisible2=true">修改分类</el-button>
+      <el-button class="footer-right" v-popover:popover5>发布</el-button>
     </div>
     <el-dialog title="文章信息" :visible.sync="dialogTableVisible" :modal-append-to-body="false">
       <el-form :model="form">
@@ -89,6 +89,7 @@ export default{
         params: param
       }).then((result) => {
         let res = result.data
+        console.log(res.data.content)
         if (res.code === 200) {
           this.value = res.data.content
           this.form.title = res.data.title
@@ -151,9 +152,20 @@ export default{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-left: 150px;
 }
 .markdown{
-  height: 700px;
-  width: 80%;
+  width: 80vw;
+  height: 70vh;
+}
+.footer {
+  width: 100%;
+  padding: 20px 0;
+}
+.footer-left {
+  float: left;
+}
+.footer-right {
+  float: right;
 }
 </style>

@@ -119,7 +119,7 @@ export default {
     },
     handle (index) {
       let articleId = this.tableData[index]._id
-      this.$router.push({path: '/admin/ArticleModify', query: { articleId: articleId }})
+      this.$router.push({name: 'ArticleModify', query: {articleId}})
     },
     handleCurrentChange (val) {
       this.page = val
@@ -132,15 +132,17 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped>
 .row-bg {
-    background-color: #99a9bf;
-    width: 100%;
-    height: 837px;
-    border-radius: 2px;
+  background-color: #99a9bf;
+  width: 100%;
+  height: 837px;
+  border-radius: 2px;
 }
 .container {
   width: 1000px;
 }
-
+.el-pagination {
+  float: right;
+}
 </style>

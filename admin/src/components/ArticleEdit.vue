@@ -14,11 +14,9 @@
             <el-button type="primary" size="mini" @click="subArticle">确定</el-button>
           </div>
         </el-popover>
-        <el-button v-popover:popover5 class="submit">发布</el-button>
-        <div class="left">
-        <el-button @click="dialogTableVisible = true">填写信息</el-button>
-        <el-button @click="dialogTableVisible2 = true">添加分类</el-button>
-        </div>
+        <el-button class="footer-left" @click="dialogTableVisible=true">修改信息</el-button>
+        <el-button class="footer-left" @click="dialogTableVisible2=true">修改分类</el-button>
+        <el-button class="footer-right" v-popover:popover5>发布</el-button>
       </div>
     </div>
     <el-dialog title="文章信息" :visible.sync="dialogTableVisible" :modal-append-to-body="false">
@@ -65,7 +63,7 @@
         <el-button type="primary" @click="dialogTableVisible2 = false">确 定</el-button>
       </div>
     </el-dialog>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -94,7 +92,7 @@ export default {
   },
   methods: {
     getContent (value, render) {
-      this.content = render
+      this.content = value
     },
     subArticle () {
       let title = this.form.title
@@ -185,7 +183,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped>
 #tags .el-tag+.el-tag {
   margin-left: 10px;
 }
@@ -202,29 +200,28 @@ export default {
   vertical-align:bottom
 }
 .footer{
-  overflow: hidden;
-  margin: 0 auto;
+  width: 100%;
   padding-top: 20px;
 }
+.footer-left{
+  float: left;
+}
+.footer-right {
+  float: right;
+}
 .row-bg {
-    /*background-color: #f9fafc;*/
     background-color: #99a9bf;
     width: 100%;
     height: 837px;
     border-radius: 2px;
 }
 .admin-container {
+    margin-left: 150px;
     flex:1;
     padding: 20px;
 }
 .set{
-		height: 700px;
-    width: 1100px;
-}
-.submit{
-    float: right;
-}
-.left {
-   float: left;
+		height: 70vh;
+    width: 80vw;
 }
 </style>
