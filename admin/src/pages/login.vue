@@ -1,5 +1,5 @@
 <template>
-  <div class="login-wrap" :style="setBackground">
+  <div class="login-wrap">
     <form class="login-form">
       <input class="input" type="text" v-model="username" placeholder="username"><br>
       <input class="input" type="password" v-model="password" placeholder="password" @keyup.enter.stop="login"><br>
@@ -16,11 +16,11 @@ export default{
       username: '',
       password: '',
       show: false,
-      toLogin: true,
-      setBackground: {
-        backgroundImage: 'url(' + require('_/assets/login_bgx.gif') + ')',
-        backgroundRepeat: 'repeat'
-      }
+      toLogin: true
+      // setBackground: {
+      //   backgroundImage: 'url(' + require('_/assets/login_bgx.gif') + ')',
+      //   backgroundRepeat: 'repeat'
+      // }
     }
   },
   methods: {
@@ -36,9 +36,9 @@ export default{
       axios.post('api/login', { username, password })
         .then(res => {
           if (res.data.success === true) {
-            // let expireDays = 1000 * 60 * 60
-            // this.setCookie('user', res.data.data.username, expireDays)
-            // sessionStorage.setItem('user', res.data.data.username)
+            let expireDays = 1000 * 60 * 60
+            this.setCookie('user', res.data.data.username, expireDays)
+            sessionStorage.setItem('user', res.data.data.username)
             this.$notify({
               title: '',
               message: '登录成功！',
