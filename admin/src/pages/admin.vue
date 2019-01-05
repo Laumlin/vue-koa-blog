@@ -54,7 +54,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .page {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
@@ -62,12 +62,13 @@ export default {
   background: #FFFFF8;
 }
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
   height: 50px;
   width: 100%;
   background: #FFFFFF;
   border-bottom: 1px solid gray;
+  z-index: 1;
 }
 aside {
   position: fixed;
@@ -81,7 +82,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  padding: 100px 0 50px 0;
 }
 .logo {
   position: absolute;
