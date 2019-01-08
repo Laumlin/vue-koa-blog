@@ -1,5 +1,5 @@
 <template>
-  <div class="login-wrap">
+  <div class="login-wrap" :style="setBackground">
     <form class="login-form">
       <input class="input" type="text" v-model="username" placeholder="username"><br>
       <input class="input" type="password" v-model="password" placeholder="password" @keyup.enter.stop="login"><br>
@@ -16,11 +16,11 @@ export default{
       username: '',
       password: '',
       show: false,
-      toLogin: true
-      // setBackground: {
-      //   backgroundImage: 'url(' + require('_/assets/login_bgx.gif') + ')',
-      //   backgroundRepeat: 'repeat'
-      // }
+      toLogin: true,
+      setBackground: {
+        backgroundImage: 'url(' + require('../assets/login_bgx.gif') + ')',
+        backgroundRepeat: 'repeat'
+      }
     }
   },
   methods: {
