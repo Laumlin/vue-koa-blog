@@ -2,28 +2,24 @@
   <div class="aside">
   	<nav>
   	  <router-link :to="{path: 'article'}" active-class="active" class="aside-nav-list" tag="li">
-  	  	<i class="iconfont icon-edit">发布文章</i>
+  	  	<i class="iconfont icon-edit"> 发布文章</i>
   	  </router-link>
   	  <router-link :to="{name: 'adminArticleList'}" class="aside-nav-list" tag="li" active-class="active">
-  	  	<i class="iconfont icon-article">文章管理</i>
+  	  	<i class="iconfont icon-article"> 文章管理</i>
   	  </router-link>
   	</nav>
   </div>
 </template>
 
-<script>
-
-</script>
-
-<style scoped="">
+<style scoped>
 .aside {
   list-style-type: none;
 }
 .aside nav {
-  position: relative; 
+  position: relative;
   font-size: 18px;
   padding: 0;
-  margin: 0;
+  margin-top: 10px;
   overflow: hidden;
 }
 .aside-nav-list {
